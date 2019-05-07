@@ -209,7 +209,7 @@ def prepare_meta_ncep(xs, ys, year, month, template, height_config, module, engi
 def tasks_monthly_ncep(xs, ys, yearmonths, prepare_func, template, meta_attrs):
     return [dict(prepare_func=prepare_func,
                  xs=xs, ys=ys,
-                 fn=next(glob.iglob(template.format(year=ym[0], month=ym[1]))),
+                 fn=next(glob.iglob(template.format(year=ym[0], month=ym[1])), None),
                  engine=engine,
                  yearmonth=ym)
             for ym in yearmonths]
